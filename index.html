@@ -449,7 +449,217 @@ textarea:focus { border-color: rgba(168,224,99,0.35); }
 <div id="landing">
   <nav>
     <a class="nav-logo" href="#">
-      <div class="nav-logo-icon">📊</div>
+      <div class="nav-logo-icon" style="padding:0;overflow:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="36" height="36">
+  <defs>
+    <!-- Background -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0f1a0f"/>
+      <stop offset="100%" stop-color="#070908"/>
+    </radialGradient>
+
+    <!-- Green glow gradient -->
+    <radialGradient id="glowGrad" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#a8e063" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#a8e063" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Brain gradient -->
+    <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c5f080"/>
+      <stop offset="100%" stop-color="#5cb810"/>
+    </linearGradient>
+
+    <!-- Chart line gradient -->
+    <linearGradient id="chartGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a8e063" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#a8e063"/>
+      <stop offset="100%" stop-color="#c5f080"/>
+    </linearGradient>
+
+    <!-- Chart area fill -->
+    <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a8e063" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#a8e063" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Strong glow -->
+    <filter id="strongGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft shadow -->
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+
+    <clipPath id="circleClip">
+      <circle cx="250" cy="250" r="220"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── BACKGROUND ── -->
+  <circle cx="250" cy="250" r="250" fill="url(#bgGrad)"/>
+  <circle cx="250" cy="250" r="250" fill="url(#glowGrad)"/>
+
+  <!-- Border ring -->
+  <circle cx="250" cy="250" r="238" fill="none" stroke="#a8e063" stroke-width="1.5" stroke-opacity="0.25"/>
+  <circle cx="250" cy="250" r="232" fill="none" stroke="#a8e063" stroke-width="0.5" stroke-opacity="0.12"/>
+
+  <!-- Grid lines subtle -->
+  <g stroke="#a8e063" stroke-opacity="0.05" stroke-width="1" clip-path="url(#circleClip)">
+    <line x1="0" y1="125" x2="500" y2="125"/>
+    <line x1="0" y1="250" x2="500" y2="250"/>
+    <line x1="0" y1="375" x2="500" y2="375"/>
+    <line x1="125" y1="0" x2="125" y2="500"/>
+    <line x1="250" y1="0" x2="250" y2="500"/>
+    <line x1="375" y1="0" x2="375" y2="500"/>
+  </g>
+
+  <!-- ── CHART AREA (background) ── -->
+  <g clip-path="url(#circleClip)">
+    <path d="M 80 310 L 120 285 L 155 295 L 190 240 L 225 260 L 260 205 L 295 225 L 330 185 L 365 200 L 400 165 L 420 155 L 420 340 L 80 340 Z"
+      fill="url(#areaGrad)"/>
+    <polyline points="80,310 120,285 155,295 190,240 225,260 260,205 295,225 330,185 365,200 400,165 420,155"
+      fill="none" stroke="url(#chartGrad)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"
+      filter="url(#glow)" opacity="0.6"/>
+  </g>
+
+  <!-- ── BRAIN ICON (center) ── -->
+  <g transform="translate(250, 195)" filter="url(#strongGlow)">
+    <!-- Left hemisphere -->
+    <path d="
+      M -8 -62
+      C -8 -62 -45 -68 -58 -45
+      C -68 -28 -62 -8 -55 2
+      C -65 10 -68 25 -60 38
+      C -52 50 -38 52 -28 48
+      C -22 58 -10 65 0 65
+      L 0 -62 Z
+    " fill="url(#brainGrad)" opacity="0.95"/>
+
+    <!-- Right hemisphere -->
+    <path d="
+      M 8 -62
+      C 8 -62 45 -68 58 -45
+      C 68 -28 62 -8 55 2
+      C 65 10 68 25 60 38
+      C 52 50 38 52 28 48
+      C 22 58 10 65 0 65
+      L 0 -62 Z
+    " fill="url(#brainGrad)" opacity="0.95"/>
+
+    <!-- Center divider -->
+    <line x1="0" y1="-62" x2="0" y2="65" stroke="#0f1a0f" stroke-width="3" opacity="0.6"/>
+
+    <!-- Brain wrinkles left -->
+    <path d="M -15 -35 Q -38 -30 -42 -15" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M -18 -10 Q -48 -5 -50 12" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M -14 18 Q -40 22 -38 38" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Brain wrinkles right -->
+    <path d="M 15 -35 Q 38 -30 42 -15" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M 18 -10 Q 48 -5 50 12" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M 14 18 Q 40 22 38 38" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Chart line inside brain -->
+    <polyline points="-48,8 -30,-10 -12,0 8,-22 26,-8 48,-28"
+      fill="none" stroke="#0f1a0f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- Glowing chart line overlay -->
+    <polyline points="-48,8 -30,-10 -12,0 8,-22 26,-8 48,-28"
+      fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Small dots on chart -->
+    <circle cx="-48" cy="8" r="3" fill="#fff" opacity="0.7"/>
+    <circle cx="-12" cy="0" r="3" fill="#fff" opacity="0.7"/>
+    <circle cx="8" cy="-22" r="3.5" fill="#fff" opacity="0.9"/>
+    <circle cx="48" cy="-28" r="4" fill="#c5f080"/>
+  </g>
+
+  <!-- ── CANDLE STICKS (below brain) ── -->
+  <g transform="translate(250, 330)" filter="url(#glow)">
+    <!-- Candle 1 - bearish -->
+    <line x1="-90" y1="-18" x2="-90" y2="18" stroke="#e05555" stroke-width="1.5"/>
+    <rect x="-96" y="-10" width="12" height="16" fill="#e05555" rx="1.5"/>
+
+    <!-- Candle 2 - bullish -->
+    <line x1="-60" y1="-22" x2="-60" y2="14" stroke="#a8e063" stroke-width="1.5"/>
+    <rect x="-66" y="-14" width="12" height="20" fill="#a8e063" rx="1.5"/>
+
+    <!-- Candle 3 - bearish small -->
+    <line x1="-30" y1="-12" x2="-30" y2="16" stroke="#e05555" stroke-width="1.5"/>
+    <rect x="-36" y="-6" width="12" height="12" fill="#e05555" rx="1.5"/>
+
+    <!-- Candle 4 - bullish tall -->
+    <line x1="0" y1="-26" x2="0" y2="16" stroke="#a8e063" stroke-width="1.5"/>
+    <rect x="-6" y="-20" width="12" height="26" fill="#a8e063" rx="1.5"/>
+
+    <!-- Candle 5 - bullish -->
+    <line x1="30" y1="-20" x2="30" y2="12" stroke="#a8e063" stroke-width="1.5"/>
+    <rect x="24" y="-14" width="12" height="18" fill="#a8e063" rx="1.5"/>
+
+    <!-- Candle 6 - bearish -->
+    <line x1="60" y1="-16" x2="60" y2="14" stroke="#e05555" stroke-width="1.5"/>
+    <rect x="54" y="-8" width="12" height="14" fill="#e05555" rx="1.5"/>
+
+    <!-- Candle 7 - bullish big -->
+    <line x1="90" y1="-28" x2="90" y2="12" stroke="#a8e063" stroke-width="1.5"/>
+    <rect x="84" y="-22" width="12" height="24" fill="#a8e063" rx="1.5"/>
+  </g>
+
+  <!-- ── TEXT ── -->
+  <!-- NEXUS -->
+  <text x="250" y="418"
+    font-family="'Arial Black', 'Helvetica Neue', sans-serif"
+    font-weight="900"
+    font-size="52"
+    letter-spacing="8"
+    text-anchor="middle"
+    fill="#ffffff"
+    filter="url(#shadow)">NEXUS</text>
+
+  <!-- TRADE -->
+  <text x="250" y="418"
+    font-family="'Arial Black', 'Helvetica Neue', sans-serif"
+    font-weight="900"
+    font-size="52"
+    letter-spacing="8"
+    text-anchor="middle"
+    fill="url(#brainGrad)"
+    dy="46"
+    filter="url(#glow)">TRADE</text>
+
+  <!-- Tagline -->
+  <text x="250" y="482"
+    font-family="'Arial', sans-serif"
+    font-weight="400"
+    font-size="13"
+    letter-spacing="4"
+    text-anchor="middle"
+    fill="#a8e063"
+    opacity="0.6">AI · TRADING · INTELLIGENCE</text>
+
+  <!-- ── CORNER DOTS decoration ── -->
+  <circle cx="250" cy="58" r="3" fill="#a8e063" opacity="0.5"/>
+  <circle cx="238" cy="58" r="2" fill="#a8e063" opacity="0.25"/>
+  <circle cx="262" cy="58" r="2" fill="#a8e063" opacity="0.25"/>
+
+</svg>
+</div>
       Nexus<span>Trade</span>
     </a>
     <div class="nav-links">
@@ -469,7 +679,221 @@ textarea:focus { border-color: rgba(168,224,99,0.35); }
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-badge" data-es="● IA ACTIVA · +130 PAÍSES" data-en="● AI ACTIVE · +130 COUNTRIES" data-pt="● IA ATIVA · +130 PAÍSES">● IA ACTIVA · +130 PAÍSES</div>
+    <div style="display:flex;justify-content:center;margin-bottom:24px;animation:fadeUp 0.6s ease both">
+  <div style="width:120px;height:120px;border-radius:28px;overflow:hidden;box-shadow:0 0 40px rgba(168,224,99,0.4)">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="120" height="120">
+  <defs>
+    <!-- Background -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0f1a0f"/>
+      <stop offset="100%" stop-color="#070908"/>
+    </radialGradient>
+
+    <!-- Green glow gradient -->
+    <radialGradient id="glowGrad" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#a8e063" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#a8e063" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Brain gradient -->
+    <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c5f080"/>
+      <stop offset="100%" stop-color="#5cb810"/>
+    </linearGradient>
+
+    <!-- Chart line gradient -->
+    <linearGradient id="chartGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a8e063" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#a8e063"/>
+      <stop offset="100%" stop-color="#c5f080"/>
+    </linearGradient>
+
+    <!-- Chart area fill -->
+    <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a8e063" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#a8e063" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Strong glow -->
+    <filter id="strongGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft shadow -->
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+
+    <clipPath id="circleClip">
+      <circle cx="250" cy="250" r="220"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── BACKGROUND ── -->
+  <circle cx="250" cy="250" r="250" fill="url(#bgGrad)"/>
+  <circle cx="250" cy="250" r="250" fill="url(#glowGrad)"/>
+
+  <!-- Border ring -->
+  <circle cx="250" cy="250" r="238" fill="none" stroke="#a8e063" stroke-width="1.5" stroke-opacity="0.25"/>
+  <circle cx="250" cy="250" r="232" fill="none" stroke="#a8e063" stroke-width="0.5" stroke-opacity="0.12"/>
+
+  <!-- Grid lines subtle -->
+  <g stroke="#a8e063" stroke-opacity="0.05" stroke-width="1" clip-path="url(#circleClip)">
+    <line x1="0" y1="125" x2="500" y2="125"/>
+    <line x1="0" y1="250" x2="500" y2="250"/>
+    <line x1="0" y1="375" x2="500" y2="375"/>
+    <line x1="125" y1="0" x2="125" y2="500"/>
+    <line x1="250" y1="0" x2="250" y2="500"/>
+    <line x1="375" y1="0" x2="375" y2="500"/>
+  </g>
+
+  <!-- ── CHART AREA (background) ── -->
+  <g clip-path="url(#circleClip)">
+    <path d="M 80 310 L 120 285 L 155 295 L 190 240 L 225 260 L 260 205 L 295 225 L 330 185 L 365 200 L 400 165 L 420 155 L 420 340 L 80 340 Z"
+      fill="url(#areaGrad)"/>
+    <polyline points="80,310 120,285 155,295 190,240 225,260 260,205 295,225 330,185 365,200 400,165 420,155"
+      fill="none" stroke="url(#chartGrad)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"
+      filter="url(#glow)" opacity="0.6"/>
+  </g>
+
+  <!-- ── BRAIN ICON (center) ── -->
+  <g transform="translate(250, 195)" filter="url(#strongGlow)">
+    <!-- Left hemisphere -->
+    <path d="
+      M -8 -62
+      C -8 -62 -45 -68 -58 -45
+      C -68 -28 -62 -8 -55 2
+      C -65 10 -68 25 -60 38
+      C -52 50 -38 52 -28 48
+      C -22 58 -10 65 0 65
+      L 0 -62 Z
+    " fill="url(#brainGrad)" opacity="0.95"/>
+
+    <!-- Right hemisphere -->
+    <path d="
+      M 8 -62
+      C 8 -62 45 -68 58 -45
+      C 68 -28 62 -8 55 2
+      C 65 10 68 25 60 38
+      C 52 50 38 52 28 48
+      C 22 58 10 65 0 65
+      L 0 -62 Z
+    " fill="url(#brainGrad)" opacity="0.95"/>
+
+    <!-- Center divider -->
+    <line x1="0" y1="-62" x2="0" y2="65" stroke="#0f1a0f" stroke-width="3" opacity="0.6"/>
+
+    <!-- Brain wrinkles left -->
+    <path d="M -15 -35 Q -38 -30 -42 -15" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M -18 -10 Q -48 -5 -50 12" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M -14 18 Q -40 22 -38 38" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Brain wrinkles right -->
+    <path d="M 15 -35 Q 38 -30 42 -15" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M 18 -10 Q 48 -5 50 12" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M 14 18 Q 40 22 38 38" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Chart line inside brain -->
+    <polyline points="-48,8 -30,-10 -12,0 8,-22 26,-8 48,-28"
+      fill="none" stroke="#0f1a0f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- Glowing chart line overlay -->
+    <polyline points="-48,8 -30,-10 -12,0 8,-22 26,-8 48,-28"
+      fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Small dots on chart -->
+    <circle cx="-48" cy="8" r="3" fill="#fff" opacity="0.7"/>
+    <circle cx="-12" cy="0" r="3" fill="#fff" opacity="0.7"/>
+    <circle cx="8" cy="-22" r="3.5" fill="#fff" opacity="0.9"/>
+    <circle cx="48" cy="-28" r="4" fill="#c5f080"/>
+  </g>
+
+  <!-- ── CANDLE STICKS (below brain) ── -->
+  <g transform="translate(250, 330)" filter="url(#glow)">
+    <!-- Candle 1 - bearish -->
+    <line x1="-90" y1="-18" x2="-90" y2="18" stroke="#e05555" stroke-width="1.5"/>
+    <rect x="-96" y="-10" width="12" height="16" fill="#e05555" rx="1.5"/>
+
+    <!-- Candle 2 - bullish -->
+    <line x1="-60" y1="-22" x2="-60" y2="14" stroke="#a8e063" stroke-width="1.5"/>
+    <rect x="-66" y="-14" width="12" height="20" fill="#a8e063" rx="1.5"/>
+
+    <!-- Candle 3 - bearish small -->
+    <line x1="-30" y1="-12" x2="-30" y2="16" stroke="#e05555" stroke-width="1.5"/>
+    <rect x="-36" y="-6" width="12" height="12" fill="#e05555" rx="1.5"/>
+
+    <!-- Candle 4 - bullish tall -->
+    <line x1="0" y1="-26" x2="0" y2="16" stroke="#a8e063" stroke-width="1.5"/>
+    <rect x="-6" y="-20" width="12" height="26" fill="#a8e063" rx="1.5"/>
+
+    <!-- Candle 5 - bullish -->
+    <line x1="30" y1="-20" x2="30" y2="12" stroke="#a8e063" stroke-width="1.5"/>
+    <rect x="24" y="-14" width="12" height="18" fill="#a8e063" rx="1.5"/>
+
+    <!-- Candle 6 - bearish -->
+    <line x1="60" y1="-16" x2="60" y2="14" stroke="#e05555" stroke-width="1.5"/>
+    <rect x="54" y="-8" width="12" height="14" fill="#e05555" rx="1.5"/>
+
+    <!-- Candle 7 - bullish big -->
+    <line x1="90" y1="-28" x2="90" y2="12" stroke="#a8e063" stroke-width="1.5"/>
+    <rect x="84" y="-22" width="12" height="24" fill="#a8e063" rx="1.5"/>
+  </g>
+
+  <!-- ── TEXT ── -->
+  <!-- NEXUS -->
+  <text x="250" y="418"
+    font-family="'Arial Black', 'Helvetica Neue', sans-serif"
+    font-weight="900"
+    font-size="52"
+    letter-spacing="8"
+    text-anchor="middle"
+    fill="#ffffff"
+    filter="url(#shadow)">NEXUS</text>
+
+  <!-- TRADE -->
+  <text x="250" y="418"
+    font-family="'Arial Black', 'Helvetica Neue', sans-serif"
+    font-weight="900"
+    font-size="52"
+    letter-spacing="8"
+    text-anchor="middle"
+    fill="url(#brainGrad)"
+    dy="46"
+    filter="url(#glow)">TRADE</text>
+
+  <!-- Tagline -->
+  <text x="250" y="482"
+    font-family="'Arial', sans-serif"
+    font-weight="400"
+    font-size="13"
+    letter-spacing="4"
+    text-anchor="middle"
+    fill="#a8e063"
+    opacity="0.6">AI · TRADING · INTELLIGENCE</text>
+
+  <!-- ── CORNER DOTS decoration ── -->
+  <circle cx="250" cy="58" r="3" fill="#a8e063" opacity="0.5"/>
+  <circle cx="238" cy="58" r="2" fill="#a8e063" opacity="0.25"/>
+  <circle cx="262" cy="58" r="2" fill="#a8e063" opacity="0.25"/>
+
+</svg>
+
+  </div>
+</div><div class="hero-badge" data-es="● IA ACTIVA · +130 PAÍSES" data-en="● AI ACTIVE · +130 COUNTRIES" data-pt="● IA ATIVA · +130 PAÍSES">● IA ACTIVA · +130 PAÍSES</div>
     <h1>
       Tu <span class="accent">asistente IA</span><br>
       <span class="dim">para dominar el</span><br>
@@ -718,7 +1142,217 @@ textarea:focus { border-color: rgba(168,224,99,0.35); }
   <div class="app-header">
     <div class="app-header-top">
       <button class="back-btn" onclick="goBack()">← </button>
-      <div class="app-bot-av">📊</div>
+      <div class="app-bot-av" style="padding:0;overflow:hidden"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="40" height="40">
+  <defs>
+    <!-- Background -->
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0f1a0f"/>
+      <stop offset="100%" stop-color="#070908"/>
+    </radialGradient>
+
+    <!-- Green glow gradient -->
+    <radialGradient id="glowGrad" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#a8e063" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#a8e063" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Brain gradient -->
+    <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c5f080"/>
+      <stop offset="100%" stop-color="#5cb810"/>
+    </linearGradient>
+
+    <!-- Chart line gradient -->
+    <linearGradient id="chartGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a8e063" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#a8e063"/>
+      <stop offset="100%" stop-color="#c5f080"/>
+    </linearGradient>
+
+    <!-- Chart area fill -->
+    <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a8e063" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#a8e063" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Strong glow -->
+    <filter id="strongGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft shadow -->
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+
+    <clipPath id="circleClip">
+      <circle cx="250" cy="250" r="220"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── BACKGROUND ── -->
+  <circle cx="250" cy="250" r="250" fill="url(#bgGrad)"/>
+  <circle cx="250" cy="250" r="250" fill="url(#glowGrad)"/>
+
+  <!-- Border ring -->
+  <circle cx="250" cy="250" r="238" fill="none" stroke="#a8e063" stroke-width="1.5" stroke-opacity="0.25"/>
+  <circle cx="250" cy="250" r="232" fill="none" stroke="#a8e063" stroke-width="0.5" stroke-opacity="0.12"/>
+
+  <!-- Grid lines subtle -->
+  <g stroke="#a8e063" stroke-opacity="0.05" stroke-width="1" clip-path="url(#circleClip)">
+    <line x1="0" y1="125" x2="500" y2="125"/>
+    <line x1="0" y1="250" x2="500" y2="250"/>
+    <line x1="0" y1="375" x2="500" y2="375"/>
+    <line x1="125" y1="0" x2="125" y2="500"/>
+    <line x1="250" y1="0" x2="250" y2="500"/>
+    <line x1="375" y1="0" x2="375" y2="500"/>
+  </g>
+
+  <!-- ── CHART AREA (background) ── -->
+  <g clip-path="url(#circleClip)">
+    <path d="M 80 310 L 120 285 L 155 295 L 190 240 L 225 260 L 260 205 L 295 225 L 330 185 L 365 200 L 400 165 L 420 155 L 420 340 L 80 340 Z"
+      fill="url(#areaGrad)"/>
+    <polyline points="80,310 120,285 155,295 190,240 225,260 260,205 295,225 330,185 365,200 400,165 420,155"
+      fill="none" stroke="url(#chartGrad)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"
+      filter="url(#glow)" opacity="0.6"/>
+  </g>
+
+  <!-- ── BRAIN ICON (center) ── -->
+  <g transform="translate(250, 195)" filter="url(#strongGlow)">
+    <!-- Left hemisphere -->
+    <path d="
+      M -8 -62
+      C -8 -62 -45 -68 -58 -45
+      C -68 -28 -62 -8 -55 2
+      C -65 10 -68 25 -60 38
+      C -52 50 -38 52 -28 48
+      C -22 58 -10 65 0 65
+      L 0 -62 Z
+    " fill="url(#brainGrad)" opacity="0.95"/>
+
+    <!-- Right hemisphere -->
+    <path d="
+      M 8 -62
+      C 8 -62 45 -68 58 -45
+      C 68 -28 62 -8 55 2
+      C 65 10 68 25 60 38
+      C 52 50 38 52 28 48
+      C 22 58 10 65 0 65
+      L 0 -62 Z
+    " fill="url(#brainGrad)" opacity="0.95"/>
+
+    <!-- Center divider -->
+    <line x1="0" y1="-62" x2="0" y2="65" stroke="#0f1a0f" stroke-width="3" opacity="0.6"/>
+
+    <!-- Brain wrinkles left -->
+    <path d="M -15 -35 Q -38 -30 -42 -15" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M -18 -10 Q -48 -5 -50 12" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M -14 18 Q -40 22 -38 38" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Brain wrinkles right -->
+    <path d="M 15 -35 Q 38 -30 42 -15" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M 18 -10 Q 48 -5 50 12" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M 14 18 Q 40 22 38 38" fill="none" stroke="#0f1a0f" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Chart line inside brain -->
+    <polyline points="-48,8 -30,-10 -12,0 8,-22 26,-8 48,-28"
+      fill="none" stroke="#0f1a0f" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- Glowing chart line overlay -->
+    <polyline points="-48,8 -30,-10 -12,0 8,-22 26,-8 48,-28"
+      fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Small dots on chart -->
+    <circle cx="-48" cy="8" r="3" fill="#fff" opacity="0.7"/>
+    <circle cx="-12" cy="0" r="3" fill="#fff" opacity="0.7"/>
+    <circle cx="8" cy="-22" r="3.5" fill="#fff" opacity="0.9"/>
+    <circle cx="48" cy="-28" r="4" fill="#c5f080"/>
+  </g>
+
+  <!-- ── CANDLE STICKS (below brain) ── -->
+  <g transform="translate(250, 330)" filter="url(#glow)">
+    <!-- Candle 1 - bearish -->
+    <line x1="-90" y1="-18" x2="-90" y2="18" stroke="#e05555" stroke-width="1.5"/>
+    <rect x="-96" y="-10" width="12" height="16" fill="#e05555" rx="1.5"/>
+
+    <!-- Candle 2 - bullish -->
+    <line x1="-60" y1="-22" x2="-60" y2="14" stroke="#a8e063" stroke-width="1.5"/>
+    <rect x="-66" y="-14" width="12" height="20" fill="#a8e063" rx="1.5"/>
+
+    <!-- Candle 3 - bearish small -->
+    <line x1="-30" y1="-12" x2="-30" y2="16" stroke="#e05555" stroke-width="1.5"/>
+    <rect x="-36" y="-6" width="12" height="12" fill="#e05555" rx="1.5"/>
+
+    <!-- Candle 4 - bullish tall -->
+    <line x1="0" y1="-26" x2="0" y2="16" stroke="#a8e063" stroke-width="1.5"/>
+    <rect x="-6" y="-20" width="12" height="26" fill="#a8e063" rx="1.5"/>
+
+    <!-- Candle 5 - bullish -->
+    <line x1="30" y1="-20" x2="30" y2="12" stroke="#a8e063" stroke-width="1.5"/>
+    <rect x="24" y="-14" width="12" height="18" fill="#a8e063" rx="1.5"/>
+
+    <!-- Candle 6 - bearish -->
+    <line x1="60" y1="-16" x2="60" y2="14" stroke="#e05555" stroke-width="1.5"/>
+    <rect x="54" y="-8" width="12" height="14" fill="#e05555" rx="1.5"/>
+
+    <!-- Candle 7 - bullish big -->
+    <line x1="90" y1="-28" x2="90" y2="12" stroke="#a8e063" stroke-width="1.5"/>
+    <rect x="84" y="-22" width="12" height="24" fill="#a8e063" rx="1.5"/>
+  </g>
+
+  <!-- ── TEXT ── -->
+  <!-- NEXUS -->
+  <text x="250" y="418"
+    font-family="'Arial Black', 'Helvetica Neue', sans-serif"
+    font-weight="900"
+    font-size="52"
+    letter-spacing="8"
+    text-anchor="middle"
+    fill="#ffffff"
+    filter="url(#shadow)">NEXUS</text>
+
+  <!-- TRADE -->
+  <text x="250" y="418"
+    font-family="'Arial Black', 'Helvetica Neue', sans-serif"
+    font-weight="900"
+    font-size="52"
+    letter-spacing="8"
+    text-anchor="middle"
+    fill="url(#brainGrad)"
+    dy="46"
+    filter="url(#glow)">TRADE</text>
+
+  <!-- Tagline -->
+  <text x="250" y="482"
+    font-family="'Arial', sans-serif"
+    font-weight="400"
+    font-size="13"
+    letter-spacing="4"
+    text-anchor="middle"
+    fill="#a8e063"
+    opacity="0.6">AI · TRADING · INTELLIGENCE</text>
+
+  <!-- ── CORNER DOTS decoration ── -->
+  <circle cx="250" cy="58" r="3" fill="#a8e063" opacity="0.5"/>
+  <circle cx="238" cy="58" r="2" fill="#a8e063" opacity="0.25"/>
+  <circle cx="262" cy="58" r="2" fill="#a8e063" opacity="0.25"/>
+
+</svg>
+</div>
       <div class="app-bot-info">
         <div class="app-bot-name">Nexus<span>Trade</span></div>
         <div class="app-bot-status"><div class="status-dot"></div><span id="statusTxt">Asistente IA · En línea</span></div>
